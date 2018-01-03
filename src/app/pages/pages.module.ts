@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 // Módulos
 import { SharedModule } from '../shared/shared.module';
@@ -20,6 +21,7 @@ import { ProgressComponent } from './progress/progress.component';
         ProgressComponent
     ],
     imports: [
+        FormsModule,
         SharedModule,
         PAGES_ROUTES
     ],
