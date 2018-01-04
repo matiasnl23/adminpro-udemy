@@ -1,0 +1,15 @@
+<h4>{{ titulo }} - {{ progreso }} </h4>
+
+<div class="input-group">
+    <span class="input-group-btn">
+    <button class="btn btn-secondary" type="button" (click)="cambiarValor(-5)">
+      <i class="mdi mdi-minus" aria-hidden="true"></i>
+    </button>
+  </span>
+    <input #cajaProgreso type="number" class="form-control" name="progreso" [(ngModel)]="progreso" (ngModelChange)="onChanges($event)" min="1" max="100">
+    <span class="input-group-btn">
+    <button class="btn btn-secondary" type="button" (click)="cambiarValor(5)">
+      <i class="mdi mdi-plus" aria-hidden="true"></i>
+    </button>
+  </span>
+</div>
