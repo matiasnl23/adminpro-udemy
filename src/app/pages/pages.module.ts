@@ -14,6 +14,7 @@ import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { Graficas1Component } from './graficas1/graficas1.component';
 import { ProgressComponent } from './progress/progress.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 // Temporal
 import { ContadorComponent } from '../components/contador/contador.component';
@@ -28,7 +29,8 @@ import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.co
 
         // Temporal
         ContadorComponent,
-        GraficoDonaComponent
+        GraficoDonaComponent,
+        AccountSettingsComponent
     ],
     imports: [
         FormsModule,
