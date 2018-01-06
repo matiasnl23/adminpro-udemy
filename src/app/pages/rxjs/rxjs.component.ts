@@ -12,7 +12,6 @@ export class RxjsComponent implements OnInit {
     
 
     this.regresaObservable()
-    .retry(5)
     .subscribe(
       numero => console.log('Subs ', numero),
       err => console.error('Error en el obs ', err),
@@ -23,26 +22,39 @@ export class RxjsComponent implements OnInit {
   ngOnInit() {
   }
 
-  regresaObservable(): Observable<number> {
+  regresaObservable(): Observable<any> {
     return new Observable( observer => {
       let contador = 0;
 
       let intervalo = setInterval(() => {
         contador++;
-        observer.next(contador);
+
+        let salida = {
+          valor: contador
+        };
+
+        observer.next(salida);
 
         if(contador === 3) {
           clearInterval(intervalo);
           observer.complete();
         }
 
-        if(contador === 2) {
-          clearInterval(intervalo);
-          observer.error('Este es un mensaje de error que será atrapado en el subscribe');
-        }
+        // if(contador === 2) {
+        //   clearInterval(intervalo);
+        //   observer.error('Este es un mensaje de error que será atrapado en el subscribe');
+        // }
 
       }, 1000);
-    });
+    }).retry(2)
+    .map( (resp: any, index) => {
+      // Antes obtenía un valor como respuesta directa de este observable
+      // ahora suponiendo que el servidor cambió el tipo de respuesta antes 'contador' ahora '{ valor: contador }'
+      // lo transformo antes de enviarlo al componente
+
+      return resp.valor;
+
+    })
   }
 
 }
