@@ -9,7 +9,22 @@ import { Observable } from 'rxjs/Rx';
 export class RxjsComponent implements OnInit {
 
   constructor() {
-    let obs = new Observable( observer => {
+    
+
+    this.regresaObservable()
+    .retry(5)
+    .subscribe(
+      numero => console.log('Subs ', numero),
+      err => console.error('Error en el obs ', err),
+      () => console.log('Fin del obs')
+    );
+  }
+
+  ngOnInit() {
+  }
+
+  regresaObservable(): Observable<number> {
+    return new Observable( observer => {
       let contador = 0;
 
       let intervalo = setInterval(() => {
@@ -28,16 +43,6 @@ export class RxjsComponent implements OnInit {
 
       }, 1000);
     });
-
-    obs.retry(5)
-    .subscribe(
-      numero => console.log('Subs ', numero),
-      err => console.error('Error en el obs ', err),
-      () => console.log('Fin del obs')
-    );
-  }
-
-  ngOnInit() {
   }
 
 }
