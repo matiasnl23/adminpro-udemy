@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-rxjs',
@@ -8,10 +9,12 @@ import { Observable } from 'rxjs/Rx';
 })
 export class RxjsComponent implements OnInit {
 
+  subscription: Subscription;
+
   constructor() {
     
-
-    this.regresaObservable()
+    // Modificacion realizada para poder desuscribirse a un observable
+    this.subscription = this.regresaObservable()
     .subscribe(
       numero => console.log('Subs ', numero),
       err => console.error('Error en el obs ', err),
@@ -20,6 +23,16 @@ export class RxjsComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    // Acá la desuscripcion del observable
+    // NOTA: El setInterval va a seguir funcionando en el fondo
+    // y se debe crear una variable global para poder llamar a un
+    // clearInterval desde el ngOnDestroy
+
+    this.subscription.unsubscribe();
+    console.log('ventana cerrada');
   }
 
   regresaObservable(): Observable<any> {
@@ -35,17 +48,17 @@ export class RxjsComponent implements OnInit {
 
         observer.next(salida);
 
-        if(contador === 11) {
-          clearInterval(intervalo);
-          observer.complete();
-        }
+        // if(contador === 11) {
+        //   clearInterval(intervalo);
+        //   observer.complete();
+        // }
 
         // if(contador === 2) {
         //   clearInterval(intervalo);
         //   observer.error('Este es un mensaje de error que será atrapado en el subscribe');
         // }
 
-      }, 1000);
+      }, 500);
     }).retry(2)
     .map( (resp: any, index) => {
       // Antes obtenía un valor como respuesta directa de este observable
