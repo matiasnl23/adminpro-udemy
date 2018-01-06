@@ -13,12 +13,14 @@ const pagesRoutes: Routes = [
         path: '',
         component: PagesComponent,
         children: [
-            { path: 'dashboard', component: DashboardComponent },
-            { path: 'progress', component: ProgressComponent },
-            { path: 'graficas1', component: Graficas1Component },
-            { path: 'account-settings', component: AccountSettingsComponent },
-            { path: 'promesas', component: PromesasComponent },
-            { path: 'rxjs', component: RxjsComponent },
+            // Se manda el parámetro 'data' para enviar el título de la página actual
+
+            { path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard' } },
+            { path: 'progress', component: ProgressComponent, data: { titulo: 'Progress bar' } },
+            { path: 'graficas1', component: Graficas1Component, data: { titulo: 'Gráficas' } },
+            { path: 'account-settings', component: AccountSettingsComponent, data: { titulo: 'Configuración de la cuenta' } },
+            { path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' } },
+            { path: 'rxjs', component: RxjsComponent, data: { titulo: 'Observables' } },
             { path: '', redirectTo: '/dashboard' , pathMatch: 'full'},
         ]
     },
