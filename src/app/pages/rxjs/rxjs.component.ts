@@ -35,7 +35,7 @@ export class RxjsComponent implements OnInit {
 
         observer.next(salida);
 
-        if(contador === 3) {
+        if(contador === 11) {
           clearInterval(intervalo);
           observer.complete();
         }
@@ -51,9 +51,18 @@ export class RxjsComponent implements OnInit {
       // Antes obtenía un valor como respuesta directa de este observable
       // ahora suponiendo que el servidor cambió el tipo de respuesta antes 'contador' ahora '{ valor: contador }'
       // lo transformo antes de enviarlo al componente
+      // (index) parámetro opcional
 
       return resp.valor;
 
+    })
+    .filter( (valor, index) => {
+      // Devuelve el valor solo si se cumple la función retornando un 'true'
+      // (index) parámetro opcional
+      
+      if( (valor % 2) === 0) {
+        return true;
+      }
     })
   }
 
