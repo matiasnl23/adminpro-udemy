@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivationEnd } from '@angular/router';
-import { Title } from '@angular/platform-browser';
+import { Title, Meta, MetaDefinition } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-breadcrumbs',
@@ -13,7 +13,8 @@ export class BreadcrumbsComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public _title: Title
+    public _title: Title,
+    public _meta: Meta
   ) {
     
     this.getDataRoute().subscribe( data => {
@@ -21,6 +22,13 @@ export class BreadcrumbsComponent implements OnInit {
 
       // Cambiando el título que figura en la pestaña del navegador
       this._title.setTitle(this.titulo);
+
+      // Agregando/modificando metadata de la página para agregar información
+      let metaTag: MetaDefinition = {
+        name: 'description',
+        content: this.titulo
+      }
+      this._meta.updateTag(metaTag);
     });
   }
 
