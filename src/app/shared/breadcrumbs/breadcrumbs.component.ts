@@ -8,19 +8,25 @@ import { Router, ActivationEnd } from '@angular/router';
 })
 export class BreadcrumbsComponent implements OnInit {
 
+  titulo: string = 'Cargando...';
+
   constructor(
     private router: Router
   ) {
-    this.router.events
-    .filter( evento => evento instanceof ActivationEnd)
-    .filter( (evento: ActivationEnd) => evento.snapshot.data.titulo !== undefined)
-    .map( (evento: ActivationEnd) => evento.snapshot.data )
-    .subscribe( evento => {
-      console.log(evento);
+    
+    this.getDataRoute().subscribe( data => {
+      this.titulo = data.titulo;
     });
   }
 
   ngOnInit() {
+  }
+
+  getDataRoute() {
+    return this.router.events
+    .filter( evento => evento instanceof ActivationEnd)
+    .filter( (evento: ActivationEnd) => evento.snapshot.data.titulo !== undefined)
+    .map( (evento: ActivationEnd) => evento.snapshot.data );
   }
 
 }
