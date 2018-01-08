@@ -35,11 +35,21 @@ export class RegisterComponent implements OnInit {
         return null;
       }
 
-      return { camposIguales: true };
+      return { camposDiferentes: true };
     }
   }
 
   registrarUsuario() {
+
+    if(this.forma.invalid) {
+      return;
+    }
+
+    if(!this.forma.value.condiciones) {
+      console.log('Debe de haceptar las condiciones');
+      return;
+    }
+    
     console.log( this.forma.value );
     console.log( this.forma.valid );
   }
