@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 // Módulos
 import { SharedModule } from '../shared/shared.module';
 import { ChartsModule } from 'ng2-charts';
+import { PipesModule } from '../pipes/pipes.module';
 
 // Rutas
 import { PAGES_ROUTES } from './pages.routes';
@@ -21,6 +22,7 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 // Temporal
 import { ContadorComponent } from '../components/contador/contador.component';
 import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.component';
+
 
 
 @NgModule({
@@ -42,6 +44,7 @@ import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.co
         CommonModule,
         SharedModule,
         ChartsModule,
+        PipesModule,
         PAGES_ROUTES
     ],
     exports: [
