@@ -116,4 +116,17 @@ export class UsuarioService {
         console.log(resp);
       })
   }
+
+  cargarUsuario( offset: number = 0 ) {
+    let url = `${URL_SERVICIOS}/usuario?offset=${offset}`;
+
+    return this.http.get(url);
+  }
+
+  buscarUsuario( termino: string ) {
+    let url = `${URL_SERVICIOS}/busqueda/coleccion/usuarios/${termino}`;
+
+    return this.http.get(url).map((resp: any) => {return resp.usuarios;});
+  }
+
 }
