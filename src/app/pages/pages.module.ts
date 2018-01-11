@@ -18,6 +18,7 @@ import { ProgressComponent } from './progress/progress.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 // Temporal
 import { ContadorComponent } from '../components/contador/contador.component';
@@ -39,7 +40,8 @@ import { ProfileComponent } from './profile/profile.component';
         AccountSettingsComponent,
         PromesasComponent,
         RxjsComponent,
-        ProfileComponent
+        ProfileComponent,
+        UsuariosComponent
     ],
     imports: [
         FormsModule,
