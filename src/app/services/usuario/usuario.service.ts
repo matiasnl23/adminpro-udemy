@@ -98,7 +98,10 @@ export class UsuarioService {
       let usuarioGuardado: Usuario = resp.usuarioGuardado;
 
       swal('Usuario actualizado', usuarioGuardado.nombre, 'success');
-      this.guardarStorage( usuarioGuardado._id, this.token, usuarioGuardado);
+
+      if(usuario._id === this.usuario._id) {
+        this.guardarStorage( usuarioGuardado._id, this.token, usuarioGuardado);
+      }
 
       return true;
     });
