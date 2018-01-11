@@ -26,11 +26,12 @@
     </div>
     <div class="col-lg-5">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body" align="center">
                 <h4 class="card-title">Imagen de perfil</h4>
                 <h6 class="card-subtitle">subtítulo...</h6>
 
-                <img src="" alt="">
+                <img *ngIf="!imagenTemp" [src]="usuario.img | imagen" height="150px">
+                <img *ngIf="imagenTemp" [src]="imagenTemp" height="150px">
                 <input (change)="seleccionImagen($event.target.files[0])" type="file">
                 <br>
                 <br>
