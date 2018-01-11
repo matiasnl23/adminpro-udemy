@@ -1,0 +1,65 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input #input (keyup)="buscarUsuario( input.value )" type="text" class="form-control" placeholder="Buscar usuario...">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row animated fadeIn" *ngIf="loading">
+    <div class="col-sm-12">
+        <div class="alert alert-warning text-center">
+            <strong>Cargando</strong>
+            <br>
+            <i class="fa fa-refresh fa-spin fa-2x" aria-hidden="true"></i>
+            <br>
+            <span>Buscando...</span>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="!loading">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Usuarios registrados (<small>{{ total }}</small>)</h3>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Correo</th>
+                            <th>Nombre</th>
+                            <th>Role</th>
+                            <th>Auth</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let usuario of usuarios">
+                            <th width="70px">
+                                <img [src]="usuario.img | imagen" width="50px" class="img-circle">
+                            </th>
+                            <th>{{ usuario.email }}</th>
+                            <th>{{ usuario.nombre }}</th>
+                            <th>{{ usuario.role }}</th>
+                            <th>
+                                <label *ngIf="usuario.google" class="label label-danger">Google</label>
+                                <label *ngIf="!usuario.google" class="label label-primary">Normal</label>
+                            </th>
+                            <th>
+                                <button class="btn btn-primary"><i class="fa fa-save" aria-hidden="true"></i></button>
+                                <button class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <button class="btn btn-secondary" (click)="cambiarOffset(-5)">Atrás</button>
+                <button class="btn btn-secondary" (click)="cambiarOffset(5)">Siguiente</button>
+
+            </div>
+        </div>
+    </div>
+</div>
