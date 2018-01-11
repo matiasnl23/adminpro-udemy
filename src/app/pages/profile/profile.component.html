@@ -1,0 +1,41 @@
+<div class="row animated fadeIn">
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Perfil del Usuario</h4>
+                <h6 class="card-subtitle">made with bootstrap elements</h6>
+                <form ngNativeValidate #f="ngForm" (ngSubmit)="guardar(f.value)" class="form p-t-20">
+                    <div class="form-group">
+                        <label for="usuario_nombre">Nombre de usuario:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input [ngModel]="usuario.nombre" name="nombre" type="text" class="form-control" id="usuario_nombre" placeholder="Nombre del usuario" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="usuario_email">Correo electrónico:</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-email"></i></div>
+                            <input [ngModel]="usuario.email" name="email" type="email" class="form-control" id="usuario_email" placeholder="Correo electrónico" required [disabled]="usuario.google">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-block btn-success waves-effect waves-light m-r-10"><i class="fa fa-save" aria-hidden="true"></i> Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Imagen de perfil</h4>
+                <h6 class="card-subtitle">subtítulo...</h6>
+
+                <img src="" alt="">
+                <input type="file">
+                <br>
+                <br>
+                <button type="button" class="btn btn-block btn-success waves-effect waves-light m-r-10"><i class="fa fa-save" aria-hidden="true"></i> Subir imagen</button>
+            </div>
+        </div>
+    </div>
+</div>
