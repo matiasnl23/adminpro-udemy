@@ -22,6 +22,7 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 // Temporal
 import { ContadorComponent } from '../components/contador/contador.component';
 import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -37,7 +38,8 @@ import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.co
         GraficoDonaComponent,
         AccountSettingsComponent,
         PromesasComponent,
-        RxjsComponent
+        RxjsComponent,
+        ProfileComponent
     ],
     imports: [
         FormsModule,
