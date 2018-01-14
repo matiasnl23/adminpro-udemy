@@ -24,6 +24,7 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import { ContadorComponent } from '../components/contador/contador.component';
 import { GraficoDonaComponent } from '../components/grafico-dona/grafico-dona.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
 
 
 
@@ -41,7 +42,8 @@ import { ProfileComponent } from './profile/profile.component';
         PromesasComponent,
         RxjsComponent,
         ProfileComponent,
-        UsuariosComponent
+        UsuariosComponent,
+        ModalUploadComponent
     ],
     imports: [
         FormsModule,
