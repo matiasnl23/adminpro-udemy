@@ -1,0 +1,62 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input #input (keyup)="buscarHospital( input.value )" type="text" class="form-control" placeholder="Buscar hospital...">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="loading">
+    <div class="col-sm-12">
+        <div class="alert alert-warning text-center">
+            <strong>Cargando</strong>
+            <br>
+            <i class="fa fa-refresh fa-spin fa-2x" aria-hidden="true"></i>
+            <br>
+            <span>Buscando...</span>
+        </div>
+    </div>
+</div>
+
+<div class="row animated fadeIn" *ngIf="!loading">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div align="right">
+                    <button (click)="crearHospital()" class="btn waves-effect waves-light btn-rounded btn-primary"><i class="fa fa-plus" aria-hidden="true"></i> Cargar hospital</button>
+                </div>
+                <h3 class="card-title">Hospitales registrados (<small>{{ total }}</small>)</h3>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Foto</th>
+                            <th>Hospital</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let hospital of hospitales">
+                            <th width="70px">
+                                <img (click)="mostrarModal(hospital)" [src]="hospital.img | imagen:'hospital'" width="50px" class="pointer">
+                            </th>
+                            <th>
+                                <input [(ngModel)]="hospital.nombre" type="text" class="form-control" name="" id="" aria-describedby="helpId">
+                            </th>
+                            <th>
+                                <button (click)="guardarHospital( hospital )" class="btn btn-primary"><i class="fa fa-save" aria-hidden="true"></i></button>
+                                <button (click)="borrarHospital( hospital )" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- <button class="btn btn-secondary" (click)="cambiarOffset(-5)">Atrás</button>
+              <button class="btn btn-secondary" (click)="cambiarOffset(5)">Siguiente</button> -->
+
+            </div>
+        </div>
+    </div>
+</div>
