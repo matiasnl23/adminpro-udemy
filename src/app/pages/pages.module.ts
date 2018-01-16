@@ -20,6 +20,8 @@ import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { HospitalComponent } from './hospital/hospital.component';
+import { MedicosComponent } from './medicos/medicos.component';
+import { MedicoComponent } from './medicos/medico.component';
 import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
 
 // Temporal
@@ -45,7 +47,9 @@ import { ProfileComponent } from './profile/profile.component';
         ProfileComponent,
         UsuariosComponent,
         HospitalComponent,
-        ModalUploadComponent
+        ModalUploadComponent,
+        MedicosComponent,
+        MedicoComponent
     ],
     imports: [
         FormsModule,
